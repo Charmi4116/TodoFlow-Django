@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Details | TodoFlow{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+
+        <!-- Page Header -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-1">Task Details</h2>
+            <p class="text-muted mb-0">
+                View the complete information about this task.
+            </p>
+        </div>
+
+
+        <!-- Task Card -->
+        <div class="card">
+
+            <div class="card-body p-4">
+
+                <!-- Task Name -->
+                <div class="mb-4">
+                    <h3 class="fw-bold mb-2">
+                        {{ todo.task }}
+                    </h3>
+
+                    {% if todo.completed %}
+                        <span class="badge bg-success-subtle text-success">
+                            <i class="bi bi-check-circle me-1"></i>
+                            Completed
+                        </span>
+                    {% else %}
+                        <span class="badge bg-secondary-subtle text-secondary">
+                            <i class="bi bi-clock me-1"></i>
+                            Pending
+                        </span>
+                    {% endif %}
+                </div>
+
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <h6 class="fw-bold">Description</h6>
+
+                    {% if todo.description %}
+                        <p class="text-muted mb-0">
+                            {{ todo.description }}
+                        </p>
+                    {% else %}
+                        <p class="text-muted mb-0">
+                            No description provided.
+                        </p>
+                    {% endif %}
+                </div>
+
+
+                <!-- Priority + Due Date -->
+                <div class="row mb-4">
+
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">Priority</h6>
+
+                        {% if todo.priority == 'High' %}
+                            <span class="badge bg-danger-subtle text-danger">
+                                High
+                            </span>
+
+                        {% elif todo.priority == 'Medium' %}
+                            <span class="badge bg-warning-subtle text-warning-emphasis">
+                                Medium
+                            </span>
+
+                        {% else %}
+                            <span class="badge bg-success-subtle text-success">
+                                Low
+                            </span>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">Due Date</h6>
+
+                        {% if todo.due_date %}
+                            <p class="text-muted mb-0">
+                                {{ todo.due_date|date:"d M Y" }}
+                            </p>
+                        {% else %}
+                            <p class="text-muted mb-0">
+                                No deadline
+                            </p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <!-- Created and Updated -->
+                <div class="border-top pt-4">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <small class="text-muted">
+                                Created At
+                            </small>
+
+                            <p class="mb-0 fw-semibold">
+                                {{ todo.created_at|date:"d M Y, h:i A" }}
+                            </p>
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+                            <small class="text-muted">
+                                Last Updated
+                            </small>
+
+                            <p class="mb-0 fw-semibold">
+                                {{ todo.updated_at|date:"d M Y, h:i A" }}
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between mt-3">
+
+                    <a href="{% url 'todo_list' %}"
+                       class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i>
+                        Back
+                    </a>
+
+                    <a href="{% url 'todo_update' todo.id %}"
+                       class="btn btn-success">
+                        <i class="bi bi-pencil"></i>
+                        Edit Task
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

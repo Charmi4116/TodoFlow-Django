@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}TodoFlow | Task Form{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+
+        <!-- Page Header -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-1">{{ title }}</h2>
+            <p class="text-muted mb-0">
+                Create a new task and keep your work organized.
+            </p>
+        </div>
+
+
+        <!-- Form Card -->
+        <div class="card">
+
+            <div class="card-body p-4">
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+                    <!-- Task -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Task
+                        </label>
+
+                        {{ form.task }}
+
+                        {% if form.task.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.task.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Description
+                        </label>
+
+                        {{ form.description }}
+
+                        {% if form.description.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.description.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Priority + Due Date -->
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">
+                                Priority
+                            </label>
+
+                            {{ form.priority }}
+
+                            {% if form.priority.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.priority.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">
+                                Due Date
+                            </label>
+
+                            {{ form.due_date }}
+
+                            {% if form.due_date.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.due_date.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+
+                    <!-- Completed -->
+                    <div class="form-check mb-4">
+                        {{ form.completed }}
+
+                        <label class="form-check-label">
+                            Mark task as completed
+                        </label>
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{% url 'todo_list' %}"
+                           class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+                        </a>
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-lg"></i>
+                            {{ button_text }}
+                        </button>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
