@@ -1,37 +1,39 @@
 # TodoFlow - Django Todo Application
 
-TodoFlow is a simple Todo management application built with Django. It allows users to create, view, update, and delete tasks through a clean and responsive interface.
+TodoFlow is a Django-based task management application that helps users create, organize, and track their tasks.
 
 ## Features
 
-- Create new tasks
-- View all tasks
-- View detailed task information
-- Update tasks
-- Delete tasks with confirmation
-- Mark tasks as completed or pending
-- Set task priority (Low, Medium, High)
-- Add descriptions and due dates
-- Dashboard with task statistics
-- Responsive Bootstrap UI
+* Create, update, and delete tasks
+* Task status and priority management
+* Task descriptions and due dates
+* Search and filter tasks
+* Pagination
+* Task statistics
+* Task detail view
+* Soft deletion
+* Duplicate active task prevention
 
-## Technologies Used
+## Technologies
 
-- Python
-- Django
-- SQLite
-- HTML
-- CSS
-- Bootstrap
-- Bootstrap Icons
+* Python
+* Django
+* SQLite
+* HTML
+* CSS
+* Bootstrap
 
 ## Django Concepts Used
 
-- Models and Migrations
-- ModelForms
-- CRUD Operations
-- URL Routing
-- Django ORM
-- Templates
-- Template Inheritance
-- Django Admin
+* Models and ModelForms
+* CRUD Operations
+* Django ORM
+* URL Routing
+* Templates
+* Migrations
+* Filtering and Searching
+* Pagination
+
+
+* Model Constraints
+* Soft Deletion
