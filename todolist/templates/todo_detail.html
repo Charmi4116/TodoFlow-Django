@@ -27,19 +27,30 @@
                         {{ todo.task }}
                     </h3>
 
-                    {% if todo.completed %}
+                    {% if todo.status == 'Completed' %}
+
                         <span class="badge bg-success-subtle text-success">
                             <i class="bi bi-check-circle me-1"></i>
                             Completed
                         </span>
-                    {% else %}
-                        <span class="badge bg-secondary-subtle text-secondary">
+
+                    {% elif todo.status == 'Ongoing' %}
+
+                        <span class="badge bg-warning-subtle text-warning-emphasis">
                             <i class="bi bi-clock me-1"></i>
+                            Ongoing
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-secondary-subtle text-secondary">
+                            <i class="bi bi-hourglass-split me-1"></i>
                             Pending
                         </span>
+
                     {% endif %}
                 </div>
-
+                
 
                 <!-- Description -->
                 <div class="mb-4">
@@ -136,12 +147,6 @@
                        class="btn btn-outline-secondary">
                         <i class="bi bi-arrow-left"></i>
                         Back
-                    </a>
-
-                    <a href="{% url 'todo_update' todo.id %}"
-                       class="btn btn-success">
-                        <i class="bi bi-pencil"></i>
-                        Edit Task
                     </a>
 
                 </div>

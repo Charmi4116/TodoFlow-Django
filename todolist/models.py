@@ -12,9 +12,21 @@ class Todo(models.Model):
         ('High', 'High'),
     ]
 
-    task = models.CharField(max_length=200)
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Ongoing', 'Ongoing'),
+        ('Completed', 'Completed'),
+    ]
+
+    is_deleted = models.BooleanField(default=False)
+    task = models.CharField(max_length=200,unique=True)
     description = models.TextField(blank=True)
     completed = models.BooleanField(default=False)
+    status = models.CharField(
+    max_length=20,
+    choices=STATUS_CHOICES,
+    default='Pending'
+    )
     priority = models.CharField(
         max_length=10,
         choices=PRIORITY_CHOICES,
@@ -23,6 +35,6 @@ class Todo(models.Model):
     due_date = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.task

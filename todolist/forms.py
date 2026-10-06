@@ -8,9 +8,9 @@ class TodoForm(forms.ModelForm):
         fields = [
             'task',
             'description',
-            'completed',
             'priority',
             'due_date',
+            'status',
         ]
 
         widgets = {
@@ -36,5 +36,9 @@ class TodoForm(forms.ModelForm):
             'due_date': forms.DateInput(attrs={
                 'class': 'form-control',
                 'type': 'date'
+            }),
+
+            'status': forms.Select(attrs={
+            'class': 'form-select'
             }),
         }
