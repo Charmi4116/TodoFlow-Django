@@ -106,3 +106,14 @@ def update_status(request, id):
         todo.save()
 
     return redirect('todo_list')
+
+# def todo_delete(request, id):
+#     todo = get_object_or_404(Todo, id=id)
+
+#     timestamp = timezone.localtime().strftime("%Y%m%d%H%M%S")
+#     todo.task = f"{todo.task}_{timestamp}"
+
+#     todo.is_deleted = True
+#     todo.save()
+
+#     return redirect('todo_list')
